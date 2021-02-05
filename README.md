@@ -3,4 +3,6 @@ scripts i have made :D
 
 special code - buhgobd
 
-special code - reyortsedxof
+special code2 - reyortsedxof
+
+special code3 - otuaimesgobd
