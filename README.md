@@ -10,3 +10,5 @@ special code3 - otuaimesgobd
 special code4 - iugmismugelbbub
 
 special code5 - iugsbras
+
+specialcode6 - metsysefasgobd
