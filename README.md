@@ -12,3 +12,5 @@ special code4 - iugmismugelbbub
 special code5 - iugsbras
 
 specialcode6 - metsysefasgobd
+
+specialcode7 - nroberiakatatskoobtcelloc
