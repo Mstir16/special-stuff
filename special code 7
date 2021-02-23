@@ -7,6 +7,7 @@ local status = Instance.new("TextLabel")
 TatakaiRebornCollectBooks.Name = "TatakaiRebornCollectBooks"
 TatakaiRebornCollectBooks.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 TatakaiRebornCollectBooks.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+TatakaiRebornCollectBooks.ResetOnSpawn = false
 
 Credits.Name = "Credits"
 Credits.Parent = TatakaiRebornCollectBooks
@@ -39,23 +40,30 @@ status.TextWrapped = true
 
 -- Scripts:
 
-local function IYHVY_fake_script() -- TatakaiRebornCollectBooks.Script 
+local function WFAL_fake_script() -- TatakaiRebornCollectBooks.Script 
 	local script = Instance.new('LocalScript', TatakaiRebornCollectBooks)
-    
-    if not getgenv().MTAPIMutex then loadstring(game:HttpGet("https://raw.githubusercontent.com/KikoTheDon/MT-Api-v2/main/__source/mt-api%20v2.lua", true))() end
+
 	local AncientBooks = game.ReplicatedStorage.AncientBooks
 	local AncientSamuraiBooks = game.ReplicatedStorage.AncientSamuraiBooks
 	local Character = game.Players.LocalPlayer.Character
 	local TweenService = game:GetService("TweenService")
 	
-	game.Players.LocalPlayer.Character.HumanoidRootPart:AddPropertyEmulator("Position")
+	local Part = Instance.new("Part")
+	
+	Part.Size = Vector3.new(46, 1, 52)
+	Part.CFrame = CFrame.new(4058.96948, -46.3218689, 2096.35791, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+	Part.Anchored = true
+	Part.CanCollide = true
+	Part.Parent = game.Workspace
+	 if not getgenv().MTAPIMutex then loadstring(game:HttpGet("https://raw.githubusercontent.com/KikoTheDon/MT-Api-v2/main/__source/mt-api%20v2.lua", true))() end
+	 game.Players.LocalPlayer.Character.HumanoidRootPart:AddPropertyEmulator("Position")
 	game.Players.LocalPlayer.Character.Humanoid:AddPropertyEmulator("WalkSpeed")
-
+	 
 	function GetAncientBooks(plrChar)
 	    for i, v in pairs(AncientBooks:GetChildren()) do
 	        local Book = v
 	        local tweeninginfo = TweenInfo.new(
-	            10,
+	            5,
 	            Enum.EasingStyle.Linear,
 	            Enum.EasingDirection.Out,
 	            0,
@@ -68,7 +76,8 @@ local function IYHVY_fake_script() -- TatakaiRebornCollectBooks.Script
 	
 	        local Tween = TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart,tweeninginfo,GoalOfTween)
 	        Tween:Play()
-	        wait(11)
+	        wait(7)
+			SafePL()
 	    end
 	end
 	
@@ -76,7 +85,7 @@ local function IYHVY_fake_script() -- TatakaiRebornCollectBooks.Script
 	    for i, v in pairs(AncientSamuraiBooks:GetChildren()) do
 			local Book = v
 	        local tweeninginfo = TweenInfo.new(
-	            10,
+	            5,
 	            Enum.EasingStyle.Linear,
 	            Enum.EasingDirection.Out,
 	            0,
@@ -89,7 +98,8 @@ local function IYHVY_fake_script() -- TatakaiRebornCollectBooks.Script
 	
 	        local Tween = TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart,tweeninginfo,GoalOfTween)
 	        Tween:Play()
-	        wait(11)
+	        wait(7)
+			SafePL()
 	    end
 	end
 	
@@ -106,12 +116,12 @@ local function IYHVY_fake_script() -- TatakaiRebornCollectBooks.Script
 	            0
 	      	  )
 	      	 local GoalOfTween = {
-				CFrame = Part.CFrame
+				CFrame = CFrame.new(4058.96948, -46.3218689, 2096.35791, 1, 0, 0, 0, 1, 0, 0, 0, 1)
 			 }
 	
 	         local Tween = TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart,tweeninginfo,GoalOfTween)
 	         	Tween:Play()
-	          	wait(6)
+	          	wait(7)
 				break
 			end
 		end
@@ -210,7 +220,6 @@ local function IYHVY_fake_script() -- TatakaiRebornCollectBooks.Script
 	    end
 	end
 	
-	Character:WaitForChild("Humanoid").PlatformStand = true
 	Character:WaitForChild("Humanoid").WalkSpeed = 0
 	Character:WaitForChild("Humanoid").JumpPower = 0
 	wait(1)
@@ -223,11 +232,8 @@ local function IYHVY_fake_script() -- TatakaiRebornCollectBooks.Script
 	script.Parent.status.Text = "Checking for Ancient Samurai Books Please Wait.."
 	GetAncientSamuraiBooks(Character)
 	wait(1)
-	script.Parent.status.Text = "Going back to Safe position"
-	SafePL()
-	wait(1)
 	script.Parent.status.Text = "Teleporting to different server..."
 	wait(1)
 	Teleport()
 end
-coroutine.wrap(IYHVY_fake_script)()
+coroutine.wrap(WFAL_fake_script)()
