@@ -7,10 +7,10 @@ special code2 - reyortsedxof
 
 special code3 - otuaimesgobd
 
-special code4 - iugmismugelbbub
+special code4 - mismugelbbub
 
-special code5 - iugsbras
+special code5 - sbras
 
 specialcode6 - metsysefasgobd
 
-specialcode7 - nroberiakatatskoobtcelloc
+specialcode7 - nroberiakatatskoob
