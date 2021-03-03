@@ -14,3 +14,5 @@ special code5 - sbras
 specialcode6 - metsysefasgobd
 
 specialcode7 - nroberiakatatskoob
+
+specialcode8 - mrafotuaruohgnihctiw
