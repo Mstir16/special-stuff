@@ -55,12 +55,12 @@ local function WFAL_fake_script() -- TatakaiRebornCollectBooks.Script
 	Part.Anchored = true
 	Part.CanCollide = true
 	Part.Parent = game.Workspace
-	 
+	
 	function GetAncientBooks(plrChar)
 	    for i, v in pairs(AncientBooks:GetChildren()) do
 	        local Book = v
 	        local tweeninginfo = TweenInfo.new(
-	            5,
+	            getgenv().DurationPerBook,
 	            Enum.EasingStyle.Linear,
 	            Enum.EasingDirection.Out,
 	            0,
@@ -73,7 +73,7 @@ local function WFAL_fake_script() -- TatakaiRebornCollectBooks.Script
 	
 	        local Tween = TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart,tweeninginfo,GoalOfTween)
 	        Tween:Play()
-	        wait(7)
+	        wait(getgenv().DurationPerBook)
 			SafePL()
 	    end
 	end
@@ -82,7 +82,7 @@ local function WFAL_fake_script() -- TatakaiRebornCollectBooks.Script
 	    for i, v in pairs(AncientSamuraiBooks:GetChildren()) do
 			local Book = v
 	        local tweeninginfo = TweenInfo.new(
-	            5,
+	            getgenv().DurationPerBook,
 	            Enum.EasingStyle.Linear,
 	            Enum.EasingDirection.Out,
 	            0,
@@ -95,7 +95,7 @@ local function WFAL_fake_script() -- TatakaiRebornCollectBooks.Script
 	
 	        local Tween = TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart,tweeninginfo,GoalOfTween)
 	        Tween:Play()
-	        wait(7)
+	        wait(getgenv().DurationPerBook)
 			SafePL()
 	    end
 	end
@@ -105,7 +105,7 @@ local function WFAL_fake_script() -- TatakaiRebornCollectBooks.Script
 			if v:IsA("Part") then
 			local Part = v
 	        local tweeninginfo = TweenInfo.new(
-	            5,
+	            getgenv().SafePlateDuration,
 	            Enum.EasingStyle.Linear,
 	            Enum.EasingDirection.Out,
 	            0,
@@ -118,7 +118,7 @@ local function WFAL_fake_script() -- TatakaiRebornCollectBooks.Script
 	
 	         local Tween = TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart,tweeninginfo,GoalOfTween)
 	         	Tween:Play()
-	          	wait(7)
+	          	wait(getgenv().SafePlateDuration)
 				break
 			end
 		end
