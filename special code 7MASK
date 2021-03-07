@@ -74,6 +74,7 @@ local function WFAL_fake_script() -- TatakaiRebornCollectBooks.Script
 	        local Tween = TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart,tweeninginfo,GoalOfTween)
 	        Tween:Play()
 	        wait(getgenv().DurationPerBook)
+		wait(2)
 			SafePL()
 	    end
 	end
@@ -97,6 +98,7 @@ local function WFAL_fake_script() -- TatakaiRebornCollectBooks.Script
 	         local Tween = TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart,tweeninginfo,GoalOfTween)
 	         	Tween:Play()
 	          	wait(getgenv().SafePlateDuration)
+			wait(2)
 				break
 			end
 		end
