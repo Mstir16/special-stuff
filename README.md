@@ -16,3 +16,7 @@ specialcode6 - metsysefasgobd
 specialcode7 - nroberiakatatskoob
 
 specialcode8 - mrafotuaruohgnihctiw
+
+specialcode9 - lavivrusretsasidlarutan
+
+specialcode10 - iugyratero
