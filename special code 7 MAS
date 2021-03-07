@@ -1,0 +1,215 @@
+local TatakaiRebornCollectBooks = Instance.new("ScreenGui")
+local Credits = Instance.new("TextLabel")
+local status = Instance.new("TextLabel")
+
+--Properties:
+
+TatakaiRebornCollectBooks.Name = "TatakaiRebornCollectBooks"
+TatakaiRebornCollectBooks.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+TatakaiRebornCollectBooks.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+TatakaiRebornCollectBooks.ResetOnSpawn = false
+
+Credits.Name = "Credits"
+Credits.Parent = TatakaiRebornCollectBooks
+Credits.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Credits.BackgroundTransparency = 1.000
+Credits.BorderSizePixel = 0
+Credits.Position = UDim2.new(0.827675939, 0, 0.961532712, 0)
+Credits.Size = UDim2.new(0.172035143, 0, 0.0377604179, 0)
+Credits.Font = Enum.Font.SourceSans
+Credits.Text = "made by m1ke#5591"
+Credits.TextColor3 = Color3.fromRGB(255, 255, 255)
+Credits.TextScaled = true
+Credits.TextSize = 14.000
+Credits.TextWrapped = true
+
+status.Name = "status"
+status.Parent = TatakaiRebornCollectBooks
+status.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+status.BackgroundTransparency = 1.000
+status.BorderSizePixel = 0
+status.Position = UDim2.new(0.246057555, 0, -0.00020519644, 0)
+status.Size = UDim2.new(0.507320642, 0, 0.05859375, 0)
+status.Font = Enum.Font.Cartoon
+status.Text = "Getting Ready"
+status.TextColor3 = Color3.fromRGB(255, 255, 255)
+status.TextScaled = true
+status.TextSize = 14.000
+status.TextStrokeTransparency = 0.000
+status.TextWrapped = true
+
+-- Scripts:
+
+local function WFAL_fake_script() -- TatakaiRebornCollectBooks.Script 
+	local script = Instance.new('LocalScript', TatakaiRebornCollectBooks)
+
+	local AncientBooks = game.ReplicatedStorage.AncientBooks
+	local AncientSamuraiBooks = game.ReplicatedStorage.AncientSamuraiBooks
+	local Character = game.Players.LocalPlayer.Character
+	local TweenService = game:GetService("TweenService")
+	
+	local Part = Instance.new("Part")
+	
+	Part.Size = Vector3.new(46, 1, 52)
+	Part.CFrame = CFrame.new(4058.96948, -46.3218689, 2096.35791, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+	Part.Anchored = true
+	Part.CanCollide = true
+	Part.Parent = game.Workspace
+
+    if not getgenv().MTAPIMutex then loadstring(game:HttpGet("https://raw.githubusercontent.com/KikoTheDon/MT-Api-v2/main/__source/mt-api%20v2.lua", true))() end
+	 game.Players.LocalPlayer.Character.HumanoidRootPart:AddPropertyEmulator("Position")
+	game.Players.LocalPlayer.Character.Humanoid:AddPropertyEmulator("WalkSpeed")
+	
+	function GetAncientSamuraiBooks(plrChar)
+	    for i, v in pairs(AncientSamuraiBooks:GetChildren()) do
+			local Book = v
+	        local tweeninginfo = TweenInfo.new(
+	            5,
+	            Enum.EasingStyle.Linear,
+	            Enum.EasingDirection.Out,
+	            0,
+	            false,
+	            0
+	        )
+	        local GoalOfTween = {
+				CFrame = Book.CFrame
+			}
+	
+	        local Tween = TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart,tweeninginfo,GoalOfTween)
+	        Tween:Play()
+	        wait(7)
+			SafePL()
+	    end
+	end
+	
+	function SafePL()
+		for i,v in pairs(game.Workspace.Map:GetChildren()) do
+			if v:IsA("Part") then
+			local Part = v
+	        local tweeninginfo = TweenInfo.new(
+	            5,
+	            Enum.EasingStyle.Linear,
+	            Enum.EasingDirection.Out,
+	            0,
+	            false,
+	            0
+	      	  )
+	      	 local GoalOfTween = {
+				CFrame = CFrame.new(4058.96948, -46.3218689, 2096.35791, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+			 }
+	
+	         local Tween = TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart,tweeninginfo,GoalOfTween)
+	         	Tween:Play()
+	          	wait(7)
+				break
+			end
+		end
+	end
+	
+	local PlaceID = game.PlaceId
+	local AllIDs = {}
+	local foundAnything = ""
+	local actualHour = os.date("!*t").hour
+	local Deleted = false
+	 
+	local File =
+	    pcall(
+	    function()
+	        AllIDs = game:GetService("HttpService"):JSONDecode(readfile("NotSameServers.json"))
+	    end
+	)
+	if not File then
+	    table.insert(AllIDs, actualHour)
+	    writefile("NotSameServers.json", game:GetService("HttpService"):JSONEncode(AllIDs))
+	end
+	function TPReturner()
+	    local Site
+	    if foundAnything == "" then
+	        Site =
+	            game.HttpService:JSONDecode(
+	            game:HttpGet("https://games.roblox.com/v1/games/" .. PlaceID .. "/servers/Public?sortOrder=Asc&limit=100")
+	        )
+	    else
+	        Site =
+	            game.HttpService:JSONDecode(
+	            game:HttpGet(
+	                "https://games.roblox.com/v1/games/" ..
+	                    PlaceID .. "/servers/Public?sortOrder=Asc&limit=100&cursor=" .. foundAnything
+	            )
+	        )
+	    end
+	    local ID = ""
+	    if Site.nextPageCursor and Site.nextPageCursor ~= "null" and Site.nextPageCursor ~= nil then
+	        foundAnything = Site.nextPageCursor
+	    end
+	    local num = 0
+	    for i, v in pairs(Site.data) do
+	        local Possible = true
+	        ID = tostring(v.id)
+	        if tonumber(v.maxPlayers) > tonumber(v.playing) then
+	            for _, Existing in pairs(AllIDs) do
+	                if num ~= 0 then
+	                    if ID == tostring(Existing) then
+	                        Possible = false
+	                    end
+	                else
+	                    if tonumber(actualHour) ~= tonumber(Existing) then
+	                        local delFile =
+	                            pcall(
+	                            function()
+	                                delfile("NotSameServers.json")
+	                                AllIDs = {}
+	                                table.insert(AllIDs, actualHour)
+	                            end
+	                        )
+	                    end
+	                end
+	                num = num + 1
+	            end
+	            if Possible == true then
+	                table.insert(AllIDs, ID)
+	                wait()
+	                pcall(
+	                    function()
+	                        writefile("NotSameServers.json", game:GetService("HttpService"):JSONEncode(AllIDs))
+	                        wait()
+	                        game:GetService("TeleportService"):TeleportToPlaceInstance(
+	                            PlaceID,
+	                            ID,
+	                            game.Players.LocalPlayer
+	                        )
+	                    end
+	                )
+	                wait(4)
+	            end
+	        end
+	    end
+	end
+	 
+	function Teleport()
+	    while wait() do
+	        pcall(
+	            function()
+	                TPReturner()
+	                if foundAnything ~= "" then
+	                    TPReturner()
+	                end
+	            end
+	        )
+	    end
+	end
+	
+	Character:WaitForChild("Humanoid").WalkSpeed = 0
+	Character:WaitForChild("Humanoid").JumpPower = 0
+	wait(1)
+	script.Parent.status.Text = "Getting in Safe Position"
+	SafePL()
+    wait(1)
+	script.Parent.status.Text = "Checking for Ancient Samurai Books Please Wait.."
+	GetAncientSamuraiBooks(Character)
+	wait(1)
+	script.Parent.status.Text = "Teleporting to different server..."
+	wait(1)
+	Teleport()
+end
+coroutine.wrap(WFAL_fake_script)()
